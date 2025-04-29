@@ -1,0 +1,19 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+parameters:
+  timeout: 20
+  partitions:
+    - tansy
+
+steps:
+  build: |
+
+  run:
+    squeezenet:
+      model: /data/squeezenet1.onnx
+      measurements: 1

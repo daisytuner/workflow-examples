@@ -1,0 +1,22 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+parameters:
+  timeout: 20
+  partitions:
+    - zinnia
+
+steps:
+  build: |  
+    nvcc -O1 -g -o cuda/matmul.out cuda/matmul.cu
+
+  run:
+    matmul_cu:
+      command: ./cuda/matmul.out
+      measurements: 5
+      profiler: nsys
+      kernels: true

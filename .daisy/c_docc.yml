@@ -1,0 +1,25 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+parameters:
+  timeout: 20
+  partitions:
+    - bellis5
+
+steps:
+  build: |
+    docc -Xclang -no-opaque-pointers -g -O1 -mllvm -hotspot -o c/matmul.out c/matmul.c -ldaisy_rtl
+
+  run:
+    matmul:
+      command: ./c/matmul.out
+      measurements: 5
+      profiler: perf
+      loops: true
+      metrics:
+        - flops_dp
+        - memory_bandwidth
