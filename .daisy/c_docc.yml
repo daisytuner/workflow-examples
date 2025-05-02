@@ -17,9 +17,5 @@ steps:
   run:
     matmul:
       command: ./c/matmul.out
-      measurements: 5
-      profiler: perf
+      measurements: 2
       loops: true
-      metrics:
-        - flops_dp
-        - memory_bandwidth
