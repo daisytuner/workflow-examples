@@ -1,0 +1,25 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+parameters:
+  timeout: 30
+  partitions:
+    - chamomile
+
+steps:
+  build: |
+    cd ttnn
+    python3 -m venv venv
+    . venv/bin/activate
+    pip config set global.extra-index-url https://download.pytorch.org/whl/cpu
+    pip install /opt/tenstorrent/wheels/ttnn-0.58.0rc25+gg33cbd50ba3-cp312-cp312-linux_x86_64.whl
+  run:
+    matmul_ttnn:
+      command: venv/bin/python3 matmul_tutorial.py
+      cwd: ttnn
+      measurements: 3
+      profiler: py-spy

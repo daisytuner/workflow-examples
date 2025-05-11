@@ -1,0 +1,26 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+parameters:
+  timeout: 30
+  partitions:
+    - zinnia
+
+steps:
+  build: |
+    cd metal/matmul_single_core
+    export TT_METAL_HOME=$TT_METAL_INSTALL_HOME
+    cmake . -B build -G Ninja
+    cmake --build build
+  run:
+    matmul_single_core:
+      command: ./build/demo
+      cwd: metal/matmul_single_core
+      env:
+        TT_METAL_HOME: $TT_METAL_INSTALL_HOME
+      measurements: 3
+      profiler: perf
