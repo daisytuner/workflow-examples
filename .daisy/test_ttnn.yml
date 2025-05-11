@@ -22,4 +22,3 @@ steps:
       command: venv/bin/python3 matmul_tutorial.py
       cwd: ttnn
       measurements: 3
-      profiler: py-spy
