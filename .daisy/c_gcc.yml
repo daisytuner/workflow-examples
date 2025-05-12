@@ -6,7 +6,6 @@ on:
     types: [opened, reopened, synchronize, ready_for_review]
 
 parameters:
-  timeout: 20
   partitions:
     - bellis5
 
