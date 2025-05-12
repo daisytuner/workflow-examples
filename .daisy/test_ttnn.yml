@@ -21,4 +21,4 @@ steps:
     matmul_ttnn:
       command: venv/bin/python3 matmul_tutorial.py
       cwd: ttnn
-      measurements: 3
+      measurements: 1
