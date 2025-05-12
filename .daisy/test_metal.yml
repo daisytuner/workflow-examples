@@ -22,5 +22,4 @@ steps:
       cwd: metal/matmul_single_core
       env:
         TT_METAL_HOME: $TT_METAL_INSTALL_HOME
-      measurements: 3
-      profiler: perf
+      measurements: 1
