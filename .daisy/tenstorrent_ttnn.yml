@@ -20,5 +20,5 @@ steps:
   run:
     matmul_ttnn:
       command: venv/bin/python3 matmul_tutorial.py
-      cwd: ttnn
+      cwd: tenstorrent/ttnn
       measurements: 3
