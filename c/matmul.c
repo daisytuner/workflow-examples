@@ -1,28 +1,29 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #define N 64
 #define M 64
 #define K 64
 
 int main() {
-    int A[N][K];
-    int B[K][M];
-    int C[N][M];
+    double A[N][K];
+    double B[K][M];
+    double C[N][M];
     
     // Init
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < K; j++) {
-            A[i][j] = i + j;
+            A[i][j] = (double)rand()/(double)RAND_MAX;
         }
     }
     for (int i = 0; i < K; i++) {
         for (int j = 0; j < M; j++) {
-            B[i][j] = i + j;
+            B[i][j] = (double)rand()/(double)RAND_MAX;
         }
     }
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
-            C[i][j] = 0;
+            C[i][j] = 0.0;
         }
     }
 
@@ -38,7 +39,7 @@ int main() {
     // Print
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
-            printf("%d ", C[i][j]);
+            printf("%f ", C[i][j]);
         }
         printf("\n");
     }
