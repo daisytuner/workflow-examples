@@ -12,7 +12,7 @@ parameters:
 
 steps:
   build: |
-    cd ttnn
+    cd tenstorrent/ttnn
     python3 -m venv venv
     . venv/bin/activate
     pip config set global.extra-index-url https://download.pytorch.org/whl/cpu
@@ -20,5 +20,5 @@ steps:
   run:
     matmul_ttnn:
       command: venv/bin/python3 matmul_tutorial.py
-      cwd: ttnn
+      cwd: tenstorrent/ttnn
       measurements: 3
