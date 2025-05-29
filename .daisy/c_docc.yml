@@ -4,11 +4,14 @@ on:
       - main
   pull_request:
     types: [opened, reopened, synchronize, ready_for_review]
+  schedule:
+    - cron: "0 0 */2 * *"
 
 parameters:
   timeout: 20
   partitions:
     - bellis5
+    - chamomile
 
 steps:
   build: |
